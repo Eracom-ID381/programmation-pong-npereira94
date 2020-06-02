@@ -44,7 +44,7 @@ function draw() {
 }
 class Paddle {
   constructor(x, y, width, height) {
-    this.x = x;
+    this.x = 30;
     this.y = y;
     this.width = width;
     this.height = height;

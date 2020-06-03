@@ -27,7 +27,7 @@ function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   rectMode(CENTER);
   noStroke();
-  paddle = new Paddle()
+  //paddle = new Paddle()
   ball.x = width / 2;
   ball.y = height / 2;
 
@@ -42,7 +42,7 @@ function draw() {
   drawElements();
 
 }
-class Paddle {
+/*class Paddle {
   constructor(x, y, width, height) {
     this.x = 30;
     this.y = y;
@@ -51,25 +51,25 @@ class Paddle {
 
   }
 
+*/
 
+function drawElements() {
+  paddleRight.y = mouseY;
+  paddleLeft.y = mouseX;
+  rect(paddleLeft.x, paddleLeft.y, paddleLeft.width, paddleLeft.height);
+  rect(paddleRight.x, paddleRight.y, paddleRight.width, paddleRight.height);
+  ellipse(ball.x, ball.y, ball.radius);
+  textSize(100);
+  textAlign(RIGHT)
+  text(scoreLeft, width / 2 - 40, 100);
+  textAlign(LEFT)
 
-  function drawElements() {
-    paddleRight.y = mouseY;
-    paddleLeft.y = mouseX;
-    rect(paddleLeft.x, paddleLeft.y, paddleLeft.width, paddleLeft.height);
-    rect(paddleRight.x, paddleRight.y, paddleRight.width, paddleRight.height);
-    ellipse(ball.x, ball.y, ball.radius);
-    textSize(100);
-    textAlign(RIGHT)
-    text(scoreLeft, width / 2 - 40, 100);
-    textAlign(LEFT)
+  text(scoreRight, width / 2 + 40, 100);
 
-    text(scoreRight, width / 2 + 40, 100);
-
-    for (let y = 0; y < height; y = y + 30) {
-      rect(width / 2, y, 20, 20);
-    }
+  for (let y = 0; y < height; y = y + 30) {
+    rect(width / 2, y, 20, 20);
   }
+
 }
 
 function bounceBall() {

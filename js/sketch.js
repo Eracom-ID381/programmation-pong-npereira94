@@ -27,8 +27,8 @@ function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   rectMode(CENTER);
   noStroke();
-  paddle = new Paddle(30, 0, 20, 150);
-  paddle = new Paddle(0, 0, 20, 150);
+  paddle = new Paddle();
+  paddle = new Paddle();
   ball.x = width / 2;
   ball.y = height / 2;
 
@@ -48,9 +48,6 @@ function draw() {
 
 
 function drawElements() {
-  paddleRight.y = mouseY;
-  paddleLeft.y = mouseX;
-
 
   ellipse(ball.x, ball.y, ball.radius);
   textSize(100);

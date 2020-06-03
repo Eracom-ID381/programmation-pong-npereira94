@@ -1,6 +1,6 @@
 let scoreLeft = 0;
 let scoreRight = 0;
-
+let paddle;
 let ball = {
   x: 0,
   y: 0,
@@ -27,7 +27,8 @@ function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   rectMode(CENTER);
   noStroke();
-  //paddle = new Paddle()
+  paddle = new Paddle(30, 0, 20, 150);
+  paddle = new Paddle(0, 0, 20, 150);
   ball.x = width / 2;
   ball.y = height / 2;
 
@@ -40,24 +41,17 @@ function draw() {
   moveBall();
   bounceBall();
   drawElements();
+  paddle.afficher();
+  paddle.bouger();
 
 }
-/*class Paddle {
-  constructor(x, y, width, height) {
-    this.x = 30;
-    this.y = y;
-    this.width = width;
-    this.height = height;
 
-  }
-
-*/
 
 function drawElements() {
   paddleRight.y = mouseY;
   paddleLeft.y = mouseX;
-  rect(paddleLeft.x, paddleLeft.y, paddleLeft.width, paddleLeft.height);
-  rect(paddleRight.x, paddleRight.y, paddleRight.width, paddleRight.height);
+
+
   ellipse(ball.x, ball.y, ball.radius);
   textSize(100);
   textAlign(RIGHT)
@@ -103,10 +97,6 @@ function bounceBall() {
   }
 }
 
-function movePaddle() {
-  paddleRight.y = mouseY;
-  paddleLeft.y = mouseX;
-}
 
 function moveBall() {
   ball.x += ball.speedX;
@@ -124,4 +114,25 @@ function resetBall() {
 function windowResized() {
   resizeCanvas(window.innerWidth, window.innerHeight);
   setup();
+}
+
+class Paddle {
+  constructor(x, y, width, height) {
+    this.x = 30;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+  }
+  //afficher
+  afficher() {
+    //paddleLeft
+    rect(paddleLeft.x, paddleLeft.y, paddleLeft.width, paddleLeft.height);
+    //paddleRight
+    rect(paddleRight.x, paddleRight.y, paddleRight.width, paddleRight.height);
+
+  }
+  bouger() {
+    paddleRight.y = mouseY;
+    paddleLeft.y = mouseX;
+  }
 }

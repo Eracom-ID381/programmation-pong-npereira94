@@ -54,7 +54,6 @@ function drawElements() {
   textAlign(RIGHT)
   text(scoreLeft, width / 2 - 40, 100);
   textAlign(LEFT)
-
   text(scoreRight, width / 2 + 40, 100);
 
   for (let y = 0; y < height; y = y + 30) {

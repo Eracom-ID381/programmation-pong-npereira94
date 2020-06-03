@@ -8,7 +8,7 @@ let ball = {
   speedY: 0,
   radius: 40
 }
-let paddle;
+
 let paddleLeft = {
   x: 30,
   y: 0,

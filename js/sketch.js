@@ -6,7 +6,8 @@ let ball = {
   y: 0,
   speedX: 10,
   speedY: 0,
-  radius: 40
+  radius: 40,
+
 }
 
 let paddleLeft; // = {
@@ -42,6 +43,7 @@ function draw() {
   moveBall();
   bounceBall();
   drawElements();
+  fill(230, 39, 40)
   paddleLeft.afficher();
   paddleRight.afficher();
   paddleLeft.bouger();
@@ -72,6 +74,7 @@ function bounceBall() {
     ball.y <= paddleRight.y + paddleRight.height / 2) {
     ball.speedX = -ball.speedX;
     ball.speedY = random(-5, 5);
+
   }
 
   // Detection de collision Paddle Left
@@ -93,6 +96,7 @@ function bounceBall() {
   } else if (ball.x < 0) {
     resetBall('right');
     scoreRight += 1;
+
   }
 }
 

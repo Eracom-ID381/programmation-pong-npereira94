@@ -29,8 +29,8 @@ function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   rectMode(CENTER);
   noStroke();
-  paddleRight = new Paddle(width - 30, 0, 20, 150, 'vertical');
-  paddleLeft = new Paddle(30, 0, 20, 150, 'horizontal');
+  paddleRight = new Paddle(width - 30, 0, 20, 150, 'vertical', (230, 39, 10));
+  paddleLeft = new Paddle(30, 0, 20, 150, 'horizontal', 'blue');
   ball.x = width / 2;
   ball.y = height / 2;
 
@@ -39,11 +39,10 @@ function setup() {
 
 function draw() {
   background(0);
-  fill(255);
+  //fill(255);
   moveBall();
   bounceBall();
   drawElements();
-  fill(230, 39, 40)
   paddleLeft.afficher();
   paddleRight.afficher();
   paddleLeft.bouger();
@@ -120,12 +119,13 @@ function windowResized() {
 }
 
 class Paddle {
-  constructor(x, y, width, height, axis) {
+  constructor(x, y, width, height, axis, color) {
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
     this.axis = axis;
+    this.color = color;
   }
   //afficher
   afficher() {

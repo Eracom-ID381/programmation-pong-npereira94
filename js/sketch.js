@@ -9,30 +9,31 @@ let ball = {
   radius: 40
 }
 
-let paddleLeft = {
-  x: 30,
-  y: 0,
-  width: 20,
-  height: 150
-}
+let paddleLeft; // = {
+// x: 30,
+// y: 0,
+// width: 20,
+// height: 150
+//}
 
-let paddleRight = {
-  x: 0,
-  y: 0,
-  width: 20,
-  height: 150
-}
+let paddleRight; //= {
+// x: 0,
+// y: 0,
+// width: 20,
+// height: 150
+//}
+
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   rectMode(CENTER);
   noStroke();
-  paddle = new Paddle(30, 0, 20, 150);
-  paddle = new Paddle();
+  paddleRight = new Paddle(width - 30, 0, 20, 150, 'vertical');
+  paddleLeft = new Paddle(30, 0, 20, 150, 'horizontal');
   ball.x = width / 2;
   ball.y = height / 2;
 
-  paddleRight.x = width - 30;
+  //paddleRight.x = width - 30;
 }
 
 function draw() {
@@ -41,8 +42,10 @@ function draw() {
   moveBall();
   bounceBall();
   drawElements();
-  paddle.afficher();
-  paddle.bouger();
+  paddleLeft.afficher();
+  paddleRight.afficher();
+  paddleLeft.bouger();
+  paddleRight.bouger();
 
 }
 
@@ -113,22 +116,24 @@ function windowResized() {
 }
 
 class Paddle {
-  constructor(x, y, width, height) {
+  constructor(x, y, width, height, axis) {
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
+    this.axis = axis;
   }
   //afficher
   afficher() {
-    //paddleLeft
-    rect(paddleLeft.x, paddleLeft.y, paddleLeft.width, paddleLeft.height);
-    //paddleRight
-    rect(paddleRight.x, paddleRight.y, paddleRight.width, paddleRight.height);
+
+    rect(this.x, this.y, this.width, this.height);
 
   }
   bouger() {
-    paddleRight.y = mouseY;
-    paddleLeft.y = mouseX;
+    if (this.axis == 'vertical') {
+      this.y = mouseY;
+    } else if (this.axis == 'horizontal') {
+      this.y = mouseX;
+    }
   }
 }

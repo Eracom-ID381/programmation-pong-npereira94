@@ -29,8 +29,8 @@ function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   rectMode(CENTER);
   noStroke();
-  paddleRight = new Paddle(width - 30, 0, 20, 150, 'vertical', (230, 39, 10));
-  paddleLeft = new Paddle(30, 0, 20, 150, 'horizontal', 'blue');
+  paddleRight = new Paddle(width - 30, 0, 20, 150, 'vertical', fill(255, 255, 0));
+  paddleLeft = new Paddle(30, 0, 20, 150, 'horizontal', fill(100, 255, 10));
   ball.x = width / 2;
   ball.y = height / 2;
 
@@ -39,7 +39,7 @@ function setup() {
 
 function draw() {
   background(0);
-  //fill(255);
+  stroke(250, 30, 40);
   moveBall();
   bounceBall();
   drawElements();
@@ -47,7 +47,6 @@ function draw() {
   paddleRight.afficher();
   paddleLeft.bouger();
   paddleRight.bouger();
-
 }
 
 
@@ -73,7 +72,7 @@ function bounceBall() {
     ball.y <= paddleRight.y + paddleRight.height / 2) {
     ball.speedX = -ball.speedX;
     ball.speedY = random(-5, 5);
-
+    paddleRight.changeCouleur();
   }
 
   // Detection de collision Paddle Left
@@ -82,6 +81,7 @@ function bounceBall() {
     ball.y <= paddleLeft.y + paddleLeft.height / 2) {
     ball.speedX = -ball.speedX;
     ball.speedY = random(-5, 5);
+
   }
 
   // Detection collision "murs" haut et bas
@@ -126,6 +126,9 @@ class Paddle {
     this.height = height;
     this.axis = axis;
     this.color = color;
+  }
+  changeCouleur() {
+    this.color = fill(random(0, 255), random(0, 255), random(0, 255));
   }
   //afficher
   afficher() {

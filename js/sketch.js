@@ -86,6 +86,7 @@ function bounceBall() {
     ball2.speedX = -ball.speedX;
     ball2.speedY = random(-5, 5);
     paddleRight.changeCouleur();
+    mySound.play();
   }
 
   // Detection de collision Paddle Left
@@ -97,6 +98,7 @@ function bounceBall() {
     ball2.speedX = -ball.speedX;
     ball2.speedY = random(-5, 5);
     paddleLeft.changeCouleur();
+    mySound.play();
 
   }
 
@@ -108,9 +110,11 @@ function bounceBall() {
   if (ball.x > width) {
     resetBall('left');
     scoreLeft += 1;
+    mySound.play();
   } else if (ball.x < 0) {
     resetBall('right');
     scoreRight += 1;
+    mySound.play();
 
   }
 }

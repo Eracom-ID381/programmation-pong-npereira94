@@ -29,8 +29,8 @@ function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   rectMode(CENTER);
   noStroke();
-  paddleRight = new Paddle(width - 30, 0, 20, 150, 'vertical', fill(255, 255, 0));
-  paddleLeft = new Paddle(30, 0, 20, 150, 'horizontal', fill(100, 255, 10));
+  paddleRight = new Paddle(width - 30, 0, 20, 150, 'vertical', fill(255));
+  paddleLeft = new Paddle(30, 0, 20, 150, 'horizontal', fill(255));
   ball.x = width / 2;
   ball.y = height / 2;
 

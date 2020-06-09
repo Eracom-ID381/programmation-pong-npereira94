@@ -9,6 +9,14 @@ let ball = {
   radius: 40,
 
 }
+let ball2 = {
+  x: 0,
+  y: 0,
+  speedX: 10,
+  speedY: 0,
+  radius: 40,
+
+}
 
 let paddleLeft; // = {
 // x: 30,
@@ -33,6 +41,8 @@ function setup() {
   paddleLeft = new Paddle(30, 0, 20, 150, 'horizontal', fill(255));
   ball.x = width / 2;
   ball.y = height / 2;
+  ball2.x = width / 2;
+  ball2.y = height / 2;
 
   //paddleRight.x = width - 30;
 }
@@ -53,6 +63,7 @@ function draw() {
 function drawElements() {
 
   ellipse(ball.x, ball.y, ball.radius);
+  ellipse(ball2.x, ball2.y, ball2.radius);
   textSize(100);
   textAlign(RIGHT)
   text(scoreLeft, width / 2 - 40, 100);
@@ -72,6 +83,8 @@ function bounceBall() {
     ball.y <= paddleRight.y + paddleRight.height / 2) {
     ball.speedX = -ball.speedX;
     ball.speedY = random(-5, 5);
+    ball2.speedX = -ball.speedX;
+    ball2.speedY = random(-5, 5);
     paddleRight.changeCouleur();
   }
 
@@ -81,7 +94,10 @@ function bounceBall() {
     ball.y <= paddleLeft.y + paddleLeft.height / 2) {
     ball.speedX = -ball.speedX;
     ball.speedY = random(-5, 5);
+    ball2.speedX = -ball.speedX;
+    ball2.speedY = random(-5, 5);
     paddleLeft.changeCouleur();
+
   }
 
   // Detection collision "murs" haut et bas
@@ -103,6 +119,8 @@ function bounceBall() {
 function moveBall() {
   ball.x += ball.speedX;
   ball.y += ball.speedY;
+  ball2.x += ball2.speedX;
+  ball2.y += ball2.speedY;
 }
 
 function resetBall() {
@@ -110,6 +128,10 @@ function resetBall() {
   ball.y = height / 2;
   ball.speedX = -ball.speedX;
   ball.speedY = random(-2, 2);
+  ball2.x = width / 2;
+  ball2.y = height / 2;
+  ball2.speedX = -ball.speedX;
+  ball2.speedY = random(-2, 2);
 
 }
 

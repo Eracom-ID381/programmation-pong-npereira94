@@ -81,7 +81,7 @@ function bounceBall() {
     ball.y <= paddleLeft.y + paddleLeft.height / 2) {
     ball.speedX = -ball.speedX;
     ball.speedY = random(-5, 5);
-
+    paddleLeft.changeCouleur();
   }
 
   // Detection collision "murs" haut et bas

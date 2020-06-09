@@ -1,5 +1,6 @@
 let scoreLeft = 0;
 let scoreRight = 0;
+let osc, playing, freq, amp;
 let paddle;
 let ball = {
   x: 0,
@@ -43,6 +44,7 @@ function setup() {
   ball.y = height / 2;
   ball2.x = width / 2;
   ball2.y = height / 2;
+  osc = new p5.Oscillator('sine');
 
   //paddleRight.x = width - 30;
 }
@@ -86,6 +88,9 @@ function bounceBall() {
     ball2.speedX = -ball.speedX;
     ball2.speedY = random(-5, 5);
     paddleRight.changeCouleur();
+    osc.start();
+  } else {
+    osc.stop();
   }
 
   // Detection de collision Paddle Left
@@ -97,7 +102,9 @@ function bounceBall() {
     ball2.speedX = -ball.speedX;
     ball2.speedY = random(-5, 5);
     paddleLeft.changeCouleur();
-
+    osc.start();
+  } else {
+    osc.stop();
   }
 
   // Detection collision "murs" haut et bas
@@ -114,7 +121,6 @@ function bounceBall() {
 
   }
 }
-
 
 
 function moveBall() {
